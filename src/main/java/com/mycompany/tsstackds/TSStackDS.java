@@ -8,13 +8,16 @@ public class TSStackDS extends Thread {
 
     public static int amount = 0;
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        TSStackDS thread = new TSStackDS();
-        thread.start();
-        System.out.println(amount);
-        amount++;
-        System.out.println(amount);
+        //doing some tests in the main thread
+        
+        ThreadSafeStack s = new ThreadSafeStack();
+        s.push("uhhh");
+        s.push("test");
+        System.out.println(s.pop());//should return test, and remove it
+       
+        System.out.println(s.peek());//should be uhhh
       
+        System.out.println(s.size());//should be 1
 
     }
 

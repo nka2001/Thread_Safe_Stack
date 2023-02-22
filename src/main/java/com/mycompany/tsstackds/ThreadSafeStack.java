@@ -109,7 +109,7 @@ public class ThreadSafeStack<T extends Comparable<T>> {
      * @return
      */
     public synchronized boolean isEmpty() {
-        return false;
+        return size == 0;//if the stack is empty return true
     }
 
     /**

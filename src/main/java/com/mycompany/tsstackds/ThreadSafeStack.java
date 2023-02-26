@@ -1,6 +1,6 @@
 package com.mycompany.tsstackds;
 
-import java.util.Iterator;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * @author nicka
  * @param <T>
  */
-public class ThreadSafeStack<T extends Comparable<T>> {
+public class ThreadSafeStack<T> {
 
     /**
      * node class, will hold nodes pushed into the stack
@@ -81,11 +81,11 @@ public class ThreadSafeStack<T extends Comparable<T>> {
      */
     public synchronized void push(T addMe) {
 
-        if (size == 0) {//if the stack is empty, then head needs to be set
+        if (size() == 0) {//if the stack is empty, then head needs to be set
             Node<T> newNode = new Node<T>();//make a new node
             newNode.data = addMe;//set the data
 
-            size++;//increment the size of the stack
+            //increment the size of the stack
 
             head = newNode;//set the head to the newNode
         } else {//if the stack is not full, then just make a new node and add it
@@ -93,12 +93,13 @@ public class ThreadSafeStack<T extends Comparable<T>> {
             Node<T> newNode = new Node<T>();//create a new node
             newNode.data = addMe;//set the data
 
-            size++;//increment the size of the stack
+            //increment the size of the stack
 
             newNode.next = head;//set the next pointer to whats currently at the head
             head = newNode;//then set the head to the newly added node, pushing the old head down
 
         }
+        size++;
 
     }
 
